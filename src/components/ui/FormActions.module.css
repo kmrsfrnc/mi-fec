@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: stretch;
+  flex-wrap: wrap;
+}
+
+.spacer {
+  width: var(--form-label-max-width);
+}
+
+.inner {
+  flex: 1;
+  min-width: var(--form-field-min-width);
+}

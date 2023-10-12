@@ -3,6 +3,15 @@
   --light-gray: #f5f5f5;
   --dark-gray: #333;
   --green: #00ab35;
+  --blue: #367ffc;
+  --light-blue: #3ca2b7;
+  --red: #da3849;
+  --gray: #dbe0e5;
+  --lighter-gray: #f8f9fa;
+
+  --form-label-max-width: 200px;
+  --form-field-min-width: 300px;
+  --input-padding: 10px;
 }
 
 body {

@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: stretch;
+  margin-bottom: 1em;
+  flex-wrap: wrap;
+}
+
+.label {
+  width: var(--form-label-max-width);
+  padding: 10px 0;
+}
+
+.children {
+  flex: 1;
+  min-width: var(--form-field-min-width);
+}

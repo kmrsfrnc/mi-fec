@@ -1,0 +1,13 @@
+.button {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  padding: 0;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+}

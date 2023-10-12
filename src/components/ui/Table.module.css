@@ -5,11 +5,16 @@
 .table {
   width: 100%;
   border-collapse: collapse;
+  margin: 1em 0;
 }
 
 .table th,
 .table td {
   padding: 16px;
-  border: 1px solid;
+  border: 1px solid lightgray;
   text-align: left;
+}
+
+.table tr:nth-child(2n + 1) td {
+  background-color: whitesmoke;
 }

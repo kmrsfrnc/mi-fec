@@ -1,0 +1,38 @@
+.button {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  background: var(--lighter-gray);
+  color: var(--dark-gray);
+}
+
+.button:disabled {
+  opacity: 0.5;
+}
+
+.button + .button {
+  margin-left: 5px;
+}
+
+.success {
+  background: var(--green);
+  color: var(--white);
+}
+
+.primary {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.danger {
+  background: var(--red);
+  color: var(--white);
+}
+
+.info {
+  background: var(--light-blue);
+  color: var(--white);
+}
