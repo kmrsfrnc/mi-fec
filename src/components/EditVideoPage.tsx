@@ -1,11 +1,8 @@
 import { useMemo } from 'react';
-import { Link } from 'wouter';
 
 import { VideoFormConnected } from '../components/VideoFormConnected';
 import { useVideoStore } from '../store/useVideoStore';
-import { ErrorPage } from './ErrorPage';
-import { Paths } from '../paths';
-import { Button } from './ui/Button';
+import { NotFoundPage } from './NotFoundPage';
 
 interface Props {
   params: {
@@ -21,19 +18,13 @@ export const EditVideoPage = ({ params }: Props) => {
   }, [params.id, findVideo]);
 
   if (!video) {
-    return (
-      <ErrorPage message="Video not found">
-        <Link to={Paths.HOME}>
-          <Button color="info">Go to home</Button>
-        </Link>
-      </ErrorPage>
-    );
+    return <NotFoundPage />;
   }
 
   return (
     <>
       <h1>{`Edit video: ${video.name}`}</h1>
-      <VideoFormConnected video={video} />
+      <VideoFormConnected video={video} key={video.id} />
     </>
   );
 };
