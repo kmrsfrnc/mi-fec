@@ -2,16 +2,12 @@ import { create } from 'zustand';
 
 import { ProcessedVideo } from '../common/interfaces';
 
-interface Sort {
-  direction: 'ASC' | 'DESC';
-  key: keyof ProcessedVideo;
-}
-
 export interface UiStore {
   search: string;
   setSearch: (value: string) => void;
-  sort?: Sort;
-  setSort: (sort?: Sort) => void;
+  sortKey: keyof ProcessedVideo | null;
+  sortDescending: boolean;
+  setSort: (sortKey: keyof ProcessedVideo | null, sortDescending: boolean) => void;
 }
 
 export const useUiStore = create<UiStore>((set, get) => ({
@@ -19,8 +15,9 @@ export const useUiStore = create<UiStore>((set, get) => ({
   setSearch: (search) => {
     set({ search });
   },
-  sortDirection: 'ASC',
-  setSort: (sort) => {
-    set({ sort });
+  sortDescending: false,
+  sortKey: null,
+  setSort: (sortKey, sortDescending) => {
+    set({ sortKey, sortDescending });
   },
 }));

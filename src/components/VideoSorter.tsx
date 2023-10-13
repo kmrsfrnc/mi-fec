@@ -3,61 +3,37 @@ import { ProcessedVideo } from '../common/interfaces';
 import { useUiStore } from '../store/useUiStore';
 
 import styles from './VideoSorter.module.css';
+import { VideoSorterIcon } from './VideoSorterIcon';
 
 interface VideoSorterProps {
   label: string;
-  sortKey: keyof ProcessedVideo;
+  thisKey: keyof ProcessedVideo;
 }
 
-export const VideoSorter = ({ label, sortKey }: VideoSorterProps) => {
-  const { sort, setSort } = useUiStore();
+export const VideoSorter = ({ label, thisKey }: VideoSorterProps) => {
+  const { sortKey, sortDescending, setSort } = useUiStore();
 
-  const nextSort = useMemo(() => {
-    if (!sort) {
-      return {
-        key: sortKey,
-        direction: 'ASC' as const,
-      };
+  const nextSort = useMemo<[keyof ProcessedVideo | null, boolean]>(() => {
+    if (!sortKey || sortKey !== thisKey) {
+      return [thisKey, false];
     }
 
-    if (sort.key !== sortKey) {
-      return {
-        key: sortKey,
-        direction: 'ASC' as const,
-      };
+    if (sortDescending) {
+      return [null, false];
     }
 
-    if (sort.direction === 'ASC') {
-      return {
-        key: sort.key,
-        direction: 'DESC' as const,
-      };
-    }
-
-    return;
-  }, [sort, sortKey]);
-
-  // TODO: Move to different folder
-  const icon = useMemo(() => {
-    if (!sort?.key || sort.key !== sortKey) {
-      return '';
-    }
-
-    if (sort.direction === 'ASC') {
-      return ' ↓';
-    }
-
-    return ' ↑';
-  }, [sort, sortKey]);
+    return [sortKey, !sortDescending];
+  }, [sortKey, thisKey, sortDescending]);
 
   const handleClick = useCallback(() => {
-    setSort(nextSort);
+    setSort(...nextSort);
   }, [nextSort, setSort]);
 
   return (
     <button className={styles.button} onClick={handleClick}>
       <span>{label}</span>
-      {icon}
+      {` `}
+      <VideoSorterIcon thisKey={thisKey} sortKey={sortKey} sortDescending={sortDescending} />
     </button>
   );
 };

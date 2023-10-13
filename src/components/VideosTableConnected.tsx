@@ -6,7 +6,7 @@ import { VideosTable } from './VideosTable';
 
 export const VideosTableConnected = () => {
   const { videos, deleteVideo } = useVideoStore();
-  const { sort, search } = useUiStore();
+  const { sortKey, sortDescending, search } = useUiStore();
 
   const onDelete = useCallback(
     async (authorId: number, videoId: number) => {
@@ -19,5 +19,13 @@ export const VideosTableConnected = () => {
     [deleteVideo]
   );
 
-  return <VideosTable videos={videos} sort={sort} search={search} onDelete={onDelete} />;
+  return (
+    <VideosTable
+      videos={videos}
+      sortKey={sortKey}
+      sortDescending={sortDescending}
+      search={search}
+      onDelete={onDelete}
+    />
+  );
 };

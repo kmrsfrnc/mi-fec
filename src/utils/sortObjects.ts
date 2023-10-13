@@ -1,4 +1,4 @@
-export const sortObjects = <G>(items: G[], key?: keyof G, direction: 'ASC' | 'DESC' = 'ASC') => {
+export const sortObjects = <G>(items: G[], key: keyof G | null, sortDescending: boolean = false) => {
   if (!key) {
     return items;
   }
@@ -18,7 +18,7 @@ export const sortObjects = <G>(items: G[], key?: keyof G, direction: 'ASC' | 'DE
     return 0;
   });
 
-  if (direction === 'DESC') {
+  if (sortDescending) {
     return [...sorted].reverse();
   }
 

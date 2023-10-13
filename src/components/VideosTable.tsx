@@ -9,22 +9,20 @@ import { NoResults } from './NoResults';
 
 interface VideosTableProps {
   videos: ProcessedVideo[];
-  sort?: {
-    key: keyof ProcessedVideo;
-    direction: 'ASC' | 'DESC';
-  };
+  sortKey: keyof ProcessedVideo | null;
+  sortDescending: boolean;
   search: string;
   onDelete: (authorId: number, videoId: number) => void;
 }
 
-export const VideosTable = ({ videos, onDelete, search, sort }: VideosTableProps) => {
+export const VideosTable = ({ videos, onDelete, search, sortKey, sortDescending }: VideosTableProps) => {
   const itemsWithSearch = useMemo(() => {
     return searchObjects(videos, search);
   }, [videos, search]);
 
   const itemsWIthSearchAndSort = useMemo(() => {
-    return sortObjects(itemsWithSearch, sort?.key, sort?.direction);
-  }, [itemsWithSearch, sort?.key, sort?.direction]);
+    return sortObjects(itemsWithSearch, sortKey, sortDescending);
+  }, [itemsWithSearch, sortKey, sortDescending]);
 
   if (!itemsWIthSearchAndSort.length && search.length) {
     return <NoResults search={search} />;
@@ -35,17 +33,17 @@ export const VideosTable = ({ videos, onDelete, search, sort }: VideosTableProps
       <thead>
         <tr>
           <th>
-            <VideoSorter sortKey="name" label="Video name" />
+            <VideoSorter thisKey="name" label="Video name" />
           </th>
           <th>
-            <VideoSorter sortKey="author" label="Author" />
+            <VideoSorter thisKey="author" label="Author" />
           </th>
           <th>Categories</th>
           <th>
-            <VideoSorter sortKey="formatRes" label="Highest quality format" />
+            <VideoSorter thisKey="formatRes" label="Highest quality format" />
           </th>
           <th>
-            <VideoSorter sortKey="releaseDate" label="Release date" />
+            <VideoSorter thisKey="releaseDate" label="Release date" />
           </th>
           <th>Options</th>
         </tr>
