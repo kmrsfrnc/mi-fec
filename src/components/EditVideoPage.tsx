@@ -13,7 +13,7 @@ interface Props {
   };
 }
 
-export function EditVideoPage({ params }: Props) {
+export const EditVideoPage = ({ params }: Props) => {
   const { findVideo } = useVideoStore();
 
   const video = useMemo(() => {
@@ -36,4 +36,4 @@ export function EditVideoPage({ params }: Props) {
       <VideoFormConnected video={video} />
     </>
   );
-}
+};

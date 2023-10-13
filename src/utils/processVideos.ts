@@ -13,7 +13,7 @@ export const mapCategoryIds = (map: Map<number, string>, ids: number[]): string[
   }, []);
 };
 
-export function processVideos(authors: Author[], categories: Category[]): ProcessedVideo[] {
+export const processVideos = (authors: Author[], categories: Category[]): ProcessedVideo[] => {
   const categoriesMap = new Map(categories.map(({ id, name }) => [id, name]));
   const videos: ProcessedVideo[] = [];
 
@@ -39,4 +39,4 @@ export function processVideos(authors: Author[], categories: Category[]): Proces
   }
 
   return videos;
-}
+};

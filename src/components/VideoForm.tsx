@@ -22,7 +22,7 @@ interface VideoFormProps {
   errorMessage?: string;
 }
 
-export function VideoForm({ onSubmit, authors, categories, errorMessage, ...props }: VideoFormProps) {
+export const VideoForm = ({ onSubmit, authors, categories, errorMessage, ...props }: VideoFormProps) => {
   const nameInput = useInput(props.name);
   const [authorId, setAuthorId] = useState(props.authorId);
   const [categoryIds, setCategoryIds] = useState(props.categoryIds);
@@ -67,4 +67,4 @@ export function VideoForm({ onSubmit, authors, categories, errorMessage, ...prop
       </FormActions>
     </form>
   );
-}
+};

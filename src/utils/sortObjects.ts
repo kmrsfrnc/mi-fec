@@ -1,4 +1,4 @@
-export function sortObjects<G>(items: G[], key?: keyof G, direction: 'ASC' | 'DESC' = 'ASC') {
+export const sortObjects = <G>(items: G[], key?: keyof G, direction: 'ASC' | 'DESC' = 'ASC') => {
   if (!key) {
     return items;
   }
@@ -23,4 +23,4 @@ export function sortObjects<G>(items: G[], key?: keyof G, direction: 'ASC' | 'DE
   }
 
   return sorted;
-}
+};

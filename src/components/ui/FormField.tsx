@@ -7,7 +7,7 @@ interface FormFieldProps {
   htmlFor?: string;
 }
 
-export function FormField(props: PropsWithChildren<FormFieldProps>) {
+export const FormField = (props: PropsWithChildren<FormFieldProps>) => {
   return (
     <div className={styles.container}>
       <label htmlFor={props.htmlFor} className={styles.label}>
@@ -16,4 +16,4 @@ export function FormField(props: PropsWithChildren<FormFieldProps>) {
       <span className={styles.children}>{props.children}</span>
     </div>
   );
-}
+};

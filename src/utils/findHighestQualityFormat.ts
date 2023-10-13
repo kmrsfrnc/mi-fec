@@ -3,7 +3,7 @@ interface FormatDefinition {
   size: number;
 }
 
-function compareFormats(formats: Record<string, FormatDefinition>, a: string | null, b: string): string {
+const compareFormats = (formats: Record<string, FormatDefinition>, a: string | null, b: string): string => {
   if (a === null) return b;
 
   if (formats[b].size > formats[a].size) return b;
@@ -13,9 +13,9 @@ function compareFormats(formats: Record<string, FormatDefinition>, a: string | n
   if (parseInt(formats[a].res, 10) > parseInt(formats[b].res, 10)) return a;
 
   return b;
-}
+};
 
-export function fingHighestQualityFormat(formats: Record<string, FormatDefinition>) {
+export const fingHighestQualityFormat = (formats: Record<string, FormatDefinition>) => {
   let name: string | null = null;
 
   for (const key in formats) {
@@ -28,4 +28,4 @@ export function fingHighestQualityFormat(formats: Record<string, FormatDefinitio
     name,
     res: parseInt(formats[name].res, 10),
   };
-}
+};

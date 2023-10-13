@@ -1,6 +1,6 @@
 import { ChangeEvent, useMemo, useState } from 'react';
 
-export function useInput(defaultValue = '') {
+export const useInput = (defaultValue = '') => {
   const [value, setValue] = useState(defaultValue);
 
   return useMemo(
@@ -12,4 +12,4 @@ export function useInput(defaultValue = '') {
     }),
     [value, setValue]
   );
-}
+};

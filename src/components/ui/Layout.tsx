@@ -7,7 +7,7 @@ interface LayoutProps {
   footer: React.ReactNode;
 }
 
-export function Layout({ header, footer, children }: PropsWithChildren<LayoutProps>) {
+export const Layout = ({ header, footer, children }: PropsWithChildren<LayoutProps>) => {
   return (
     <>
       <header className={styles.header}>{header}</header>
@@ -15,4 +15,4 @@ export function Layout({ header, footer, children }: PropsWithChildren<LayoutPro
       <footer className={styles.footer}>{footer}</footer>
     </>
   );
-}
+};

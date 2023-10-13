@@ -4,7 +4,7 @@ interface ErrorPageProps {
   message?: string;
 }
 
-export function ErrorPage({ message, children }: PropsWithChildren<ErrorPageProps>) {
+export const ErrorPage = ({ message, children }: PropsWithChildren<ErrorPageProps>) => {
   return (
     <>
       <h1>{'Something went wrong'}</h1>
@@ -12,4 +12,4 @@ export function ErrorPage({ message, children }: PropsWithChildren<ErrorPageProp
       {children}
     </>
   );
-}
+};
