@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback } from 'react';
+import { ChangeEvent, useCallback, useEffect } from 'react';
 
 import { Author } from '../common/interfaces';
 import { Select, SelectProps } from './ui/Select';
@@ -17,9 +17,17 @@ export const AuthorSelect = ({ authors, value, setValue, ...props }: AuthorSelec
     [setValue]
   );
 
+  useEffect(() => {
+    const [firstAuthor] = authors;
+
+    if (!value && firstAuthor) {
+      setValue(firstAuthor.id);
+    }
+  }, [value, setValue, authors]);
+
   return (
     <Select value={value} onChange={onChange} {...props}>
-      {!value ? <option>- Choose an author -</option> : null}
+      {/* {!value ? <option>- Choose an author -</option> : null} */}
       {authors.map((author) => (
         <option key={author.id} value={author.id}>
           {author.name}

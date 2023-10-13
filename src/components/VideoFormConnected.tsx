@@ -14,9 +14,12 @@ export const VideoFormConnected = React.memo(({ video }: VideoFormConnectedProps
   const [, setLocation] = useLocation();
   const { updateVideo, createVideo, categories, authors } = useVideoStore();
   const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = useCallback(
     async (body: VideoFormModel) => {
+      setIsLoading(true);
+
       try {
         if (video?.id) {
           await updateVideo(video.id, body);
@@ -24,17 +27,20 @@ export const VideoFormConnected = React.memo(({ video }: VideoFormConnectedProps
           await createVideo(body);
         }
 
+        setIsLoading(false);
         setLocation(Paths.HOME);
       } catch (error) {
         setErrorMessage(`There was an error. Please try again.`);
+        setIsLoading(false);
       }
     },
-    [updateVideo, createVideo, video?.id, setLocation]
+    [updateVideo, createVideo, video?.id, setLocation, setIsLoading]
   );
 
   return (
     <VideoForm
       errorMessage={errorMessage}
+      isLoading={isLoading}
       authors={authors}
       categories={categories}
       onSubmit={onSubmit}

@@ -12,7 +12,7 @@ interface VideosTableProps {
   sortKey: keyof ProcessedVideo | null;
   sortDescending: boolean;
   search: string;
-  onDelete: (authorId: number, videoId: number) => void;
+  onDelete: (authorId: number, videoId: number) => Promise<void>;
 }
 
 export const VideosTable = ({ videos, onDelete, search, sortKey, sortDescending }: VideosTableProps) => {

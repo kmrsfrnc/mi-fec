@@ -23,20 +23,6 @@
       "name": "David Munch",
       "videos": [
         {
-          "id": 70992,
-          "name": "ssddd",
-          "catIds": [
-            2
-          ],
-          "formats": {
-            "one": {
-              "res": "1080p",
-              "size": 1000
-            }
-          },
-          "releaseDate": "2023-10-12"
-        },
-        {
           "id": 63579,
           "name": "B!",
           "catIds": [
@@ -67,8 +53,8 @@
           "releaseDate": "2023-10-12"
         },
         {
-          "id": 20501,
-          "name": "slow mover",
+          "id": 73660,
+          "name": "This is a movie from david munch",
           "catIds": [
             2,
             3,

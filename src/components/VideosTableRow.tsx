@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { Link } from 'wouter';
 
 import { Button } from './ui/Button';
@@ -9,15 +9,21 @@ import style from './VideosTableRow.module.css';
 
 interface VideosTableRowProps {
   item: ProcessedVideo;
-  onDelete: (authorId: number, videoId: number) => void;
+  onDelete: (authorId: number, videoId: number) => Promise<void>;
 }
 
 export const VideosTableRow = ({ item, onDelete }: VideosTableRowProps) => {
-  const handleDelete = useCallback(() => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleDelete = useCallback(async () => {
     if (window.confirm(`Are you sure you want to delete ${item.name}?`)) {
-      onDelete(item.authorId, item.id);
+      setIsLoading(true);
+
+      await onDelete(item.authorId, item.id);
+
+      setIsLoading(false);
     }
-  }, [item, onDelete]);
+  }, [item, onDelete, setIsLoading]);
 
   return (
     <tr>
@@ -31,8 +37,8 @@ export const VideosTableRow = ({ item, onDelete }: VideosTableRowProps) => {
           <Link to={generateUpdateVideoPath(item.id)}>
             <Button color="info">Edit</Button>
           </Link>
-          <Button onClick={handleDelete} color="danger">
-            Delete
+          <Button onClick={handleDelete} color="danger" disabled={isLoading}>
+            {isLoading ? 'Loading' : 'Delete'}
           </Button>
         </div>
       </th>

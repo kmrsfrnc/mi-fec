@@ -1,11 +1,13 @@
-import { PropsWithChildren } from 'react';
+import { TableHTMLAttributes } from 'react';
 
 import styles from './Table.module.css';
 
-export const Table = ({ children }: PropsWithChildren) => {
+type TableProps = TableHTMLAttributes<HTMLTableElement>;
+
+export const Table = (props: TableProps) => {
   return (
     <div className={styles.wrapper}>
-      <table className={styles.table}>{children}</table>
+      <table className={styles.table} {...props} />
     </div>
   );
 };

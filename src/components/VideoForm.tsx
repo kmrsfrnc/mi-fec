@@ -14,6 +14,7 @@ import { CategoriesSelect } from './CategoriesSelect';
 
 interface VideoFormProps {
   name: string;
+  isLoading: boolean;
   authorId?: number;
   categoryIds: number[];
   onSubmit: (video: VideoFormModel) => void;
@@ -22,7 +23,7 @@ interface VideoFormProps {
   errorMessage?: string;
 }
 
-export const VideoForm = ({ onSubmit, authors, categories, errorMessage, ...props }: VideoFormProps) => {
+export const VideoForm = ({ onSubmit, authors, categories, errorMessage, isLoading, ...props }: VideoFormProps) => {
   const nameInput = useInput(props.name);
   const [authorId, setAuthorId] = useState(props.authorId);
   const [categoryIds, setCategoryIds] = useState(props.categoryIds);
@@ -34,7 +35,7 @@ export const VideoForm = ({ onSubmit, authors, categories, errorMessage, ...prop
       categoryIds,
     };
 
-    if (!validateVideoForm(body)) {
+    if (isLoading || !validateVideoForm(body)) {
       return;
     }
 
@@ -43,7 +44,7 @@ export const VideoForm = ({ onSubmit, authors, categories, errorMessage, ...prop
 
       onSubmit(body);
     };
-  }, [nameInput.value, authorId, categoryIds, onSubmit]);
+  }, [nameInput.value, authorId, categoryIds, onSubmit, isLoading]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -59,7 +60,7 @@ export const VideoForm = ({ onSubmit, authors, categories, errorMessage, ...prop
       </FormField>
       <FormActions>
         <Button disabled={!handleSubmit} color="primary" type="submit">
-          Submit
+          {isLoading ? 'Loading' : 'Submit'}
         </Button>
         <Link to={Paths.HOME}>
           <Button>Cancel</Button>
