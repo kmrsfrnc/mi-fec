@@ -1,5 +1,6 @@
 import { Author, Category, ProcessedVideo } from '../common/interfaces';
 import { fingHighestQualityFormat } from '../utils/findHighestQualityFormat';
+import { formatDate } from './formatDate';
 
 export const mapCategoryIds = (map: Map<number, string>, ids: number[]): string[] => {
   return ids.reduce<string[]>((categories, id) => {
@@ -15,7 +16,6 @@ export const mapCategoryIds = (map: Map<number, string>, ids: number[]): string[
 
 export const processVideos = (authors: Author[], categories: Category[]): ProcessedVideo[] => {
   const categoriesMap = new Map(categories.map(({ id, name }) => [id, name]));
-
   const videos: ProcessedVideo[][] = authors.map((author) => {
     return author.videos.map((video) => {
       return {
@@ -25,7 +25,7 @@ export const processVideos = (authors: Author[], categories: Category[]): Proces
         authorId: author.id,
         categories: mapCategoryIds(categoriesMap, video.catIds),
         categoryIds: video.catIds,
-        releaseDateFormatted: new Date(video.releaseDate).toLocaleDateString(),
+        releaseDateFormatted: formatDate(video.releaseDate),
         releaseDate: video.releaseDate,
         ...fingHighestQualityFormat(video.formats),
       };

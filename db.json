@@ -23,50 +23,26 @@
       "name": "David Munch",
       "videos": [
         {
-          "id": 63579,
-          "name": "B!",
-          "catIds": [
-            2
-          ],
+          "id": 1,
+          "catIds": [1, 2],
+          "name": "Set the Moon",
           "formats": {
-            "one": {
-              "res": "1080p",
-              "size": 1000
-            }
+            "one": { "res": "1080p", "size": 1000 },
+            "two": { "res": "720p", "size": 2000 },
+            "three": { "res": "720p", "size": 900 }
           },
-          "releaseDate": "2023-10-12"
+          "releaseDate": "2018-08-09"
         },
         {
-          "id": 49791,
-          "name": "12345",
-          "catIds": [
-            1,
-            2,
-            3
-          ],
+          "id": 2,
+          "catIds": [2, 4],
+          "name": "Lights",
           "formats": {
-            "one": {
-              "res": "1080p",
-              "size": 1000
-            }
+            "one": { "res": "720p", "size": 700 },
+            "two": { "res": "1080p", "size": 1500 },
+            "three": { "res": "720p", "size": 800 }
           },
-          "releaseDate": "2023-10-12"
-        },
-        {
-          "id": 73660,
-          "name": "This is a movie from david munch",
-          "catIds": [
-            2,
-            3,
-            4
-          ],
-          "formats": {
-            "one": {
-              "res": "1080p",
-              "size": 1000
-            }
-          },
-          "releaseDate": "2023-10-12"
+          "releaseDate": "2018-08-10"
         }
       ]
     },
@@ -75,99 +51,34 @@
       "name": "Li Sun Chi",
       "videos": [
         {
+          "id": 3,
+          "catIds": [4],
+          "name": "Fun",
+          "formats": {
+            "one": { "res": "720p", "size": 730 },
+            "two": { "res": "720p", "size": 4500 },
+            "three": { "res": "720p", "size": 2005 }
+          },
+          "releaseDate": "2018-08-10"
+        },
+        {
           "id": 4,
-          "catIds": [
-            1,
-            2,
-            4
-          ],
+          "catIds": [1, 2, 4],
           "name": "It",
           "formats": {
-            "one": {
-              "res": "1080p",
-              "size": 1123
-            }
+            "one": { "res": "1080p", "size": 1123 }
           },
           "releaseDate": "2018-08-10"
         },
         {
           "id": 5,
-          "catIds": [
-            2
-          ],
+          "catIds": [2],
           "name": "Go and get it",
           "formats": {
-            "one": {
-              "res": "720p",
-              "size": 4500
-            },
-            "two": {
-              "res": "1080p",
-              "size": 1123
-            }
+            "one": { "res": "720p", "size": 4500 },
+            "two": { "res": "1080p", "size": 1123 }
           },
           "releaseDate": "2018-08-10"
-        },
-        {
-          "id": 13174,
-          "name": "name",
-          "catIds": [
-            3,
-            4
-          ],
-          "formats": {
-            "one": {
-              "res": "1080p",
-              "size": 1000
-            }
-          },
-          "releaseDate": "2023-10-12"
-        },
-        {
-          "id": 1,
-          "catIds": [
-            2,
-            3,
-            4
-          ],
-          "name": "Set the Moon",
-          "formats": {
-            "one": {
-              "res": "1080p",
-              "size": 1000
-            },
-            "two": {
-              "res": "720p",
-              "size": 2000
-            },
-            "three": {
-              "res": "720p",
-              "size": 900
-            }
-          },
-          "releaseDate": "2018-08-09",
-          "authorId": 2,
-          "categoryIds": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "id": 70734,
-          "name": "test",
-          "catIds": [
-            1,
-            2,
-            3
-          ],
-          "formats": {
-            "one": {
-              "res": "1080p",
-              "size": 1000
-            }
-          },
-          "releaseDate": "2023-10-12"
         }
       ]
     },
@@ -177,61 +88,10 @@
       "videos": [
         {
           "id": 6,
-          "catIds": [
-            2,
-            4
-          ],
+          "catIds": [2, 4],
           "name": "Torrance",
           "formats": {
-            "one": {
-              "res": "720p",
-              "size": 4500
-            }
-          },
-          "releaseDate": "2018-08-10"
-        },
-        {
-          "id": 39264,
-          "name": "Liii no more now scorsece and crime only",
-          "catIds": [
-            2,
-            3,
-            4
-          ],
-          "formats": {
-            "one": {
-              "res": "1080p",
-              "size": 1000
-            }
-          },
-          "releaseDate": "2023-10-12",
-          "authorId": 3,
-          "categoryIds": [
-            2
-          ]
-        },
-        {
-          "id": 2,
-          "catIds": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "name": "Lights & dark",
-          "formats": {
-            "one": {
-              "res": "720p",
-              "size": 700
-            },
-            "two": {
-              "res": "1080p",
-              "size": 1500
-            },
-            "three": {
-              "res": "720p",
-              "size": 800
-            }
+            "one": { "res": "720p", "size": 4500 }
           },
           "releaseDate": "2018-08-10"
         }

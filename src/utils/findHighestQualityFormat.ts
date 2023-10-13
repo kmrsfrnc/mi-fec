@@ -21,6 +21,6 @@ export const fingHighestQualityFormat = (formats: Video['formats']) => {
 
   return {
     formatName,
-    formatRes: parseInt(formats[formatName].res, 10),
+    formatRes: parseInt(formats[formatName]?.res, 10),
   };
 };
