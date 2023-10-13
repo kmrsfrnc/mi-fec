@@ -1,10 +1,7 @@
-interface FormatDefinition {
-  res: string;
-  size: number;
-}
+import { Video } from '../common/interfaces';
 
-const compareFormats = (formats: Record<string, FormatDefinition>, a: string | null, b: string): string => {
-  if (a === null) return b;
+const compareFormats = (formats: Video['formats'], a: string, b: string): string => {
+  if (!a) return b;
 
   if (formats[b].size > formats[a].size) return b;
 
@@ -15,17 +12,15 @@ const compareFormats = (formats: Record<string, FormatDefinition>, a: string | n
   return b;
 };
 
-export const fingHighestQualityFormat = (formats: Record<string, FormatDefinition>) => {
-  let name: string | null = null;
+export const fingHighestQualityFormat = (formats: Video['formats']) => {
+  let formatName = '';
 
   for (const key in formats) {
-    name = compareFormats(formats, name, key);
+    formatName = compareFormats(formats, formatName, key);
   }
 
-  if (name === null) return null;
-
   return {
-    name,
-    res: parseInt(formats[name].res, 10),
+    formatName,
+    formatRes: parseInt(formats[formatName].res, 10),
   };
 };

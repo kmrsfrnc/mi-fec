@@ -15,28 +15,22 @@ export const mapCategoryIds = (map: Map<number, string>, ids: number[]): string[
 
 export const processVideos = (authors: Author[], categories: Category[]): ProcessedVideo[] => {
   const categoriesMap = new Map(categories.map(({ id, name }) => [id, name]));
-  const videos: ProcessedVideo[] = [];
 
-  for (const author of authors) {
-    videos.push(
-      ...author.videos.map((video) => {
-        const format = fingHighestQualityFormat(video.formats);
+  const videos: ProcessedVideo[][] = authors.map((author) => {
+    return author.videos.map((video) => {
+      return {
+        id: video.id,
+        name: video.name,
+        author: author.name,
+        authorId: author.id,
+        categories: mapCategoryIds(categoriesMap, video.catIds),
+        categoryIds: video.catIds,
+        releaseDateFormatted: new Date(video.releaseDate).toLocaleDateString(),
+        releaseDate: video.releaseDate,
+        ...fingHighestQualityFormat(video.formats),
+      };
+    });
+  });
 
-        return {
-          id: video.id,
-          name: video.name,
-          author: author.name,
-          authorId: author.id,
-          categories: mapCategoryIds(categoriesMap, video.catIds),
-          categoryIds: video.catIds,
-          formatName: format?.name || '',
-          formatRes: format?.res || 0,
-          releaseDateFormatted: new Date(video.releaseDate).toLocaleDateString(),
-          releaseDate: video.releaseDate,
-        };
-      })
-    );
-  }
-
-  return videos;
+  return videos.flat();
 };

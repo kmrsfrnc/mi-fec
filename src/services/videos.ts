@@ -1,14 +1,19 @@
 import { getCategories } from './categories';
 import { getAuthor, getAuthors, patchAuthor } from './authors';
-import { Author, Category, ProcessedVideo, VideoFormModel } from '../common/interfaces';
+import { Author, Category, ProcessedAuthor, ProcessedVideo, VideoFormModel } from '../common/interfaces';
 import { processVideos } from '../utils/processVideos';
+import { processAuthors } from '../utils/processAuthors';
 
-export const getVideos = async (): Promise<{ videos: ProcessedVideo[]; authors: Author[]; categories: Category[] }> => {
+export const getVideos = async (): Promise<{
+  videos: ProcessedVideo[];
+  authors: ProcessedAuthor[];
+  categories: Category[];
+}> => {
   const [authors, categories] = await Promise.all([getAuthors(), getCategories()]);
 
   return {
     videos: processVideos(authors, categories),
-    authors,
+    authors: processAuthors(authors),
     categories,
   };
 };

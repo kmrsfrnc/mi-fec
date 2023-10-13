@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 
-import { Author, Category, ProcessedVideo, VideoFormModel } from '../common/interfaces';
+import { Category, ProcessedAuthor, ProcessedVideo, VideoFormModel } from '../common/interfaces';
 import { createVideo, deleteVideo, getVideos, updateVideo } from '../services/videos';
 
 export interface VideosStore {
   videos: ProcessedVideo[];
   categories: Category[];
-  authors: Author[];
+  authors: ProcessedAuthor[];
   fetch: () => void;
   fetchStatus: 'initial' | 'loading' | 'success' | 'error';
   findVideo: (id: number) => ProcessedVideo | undefined;

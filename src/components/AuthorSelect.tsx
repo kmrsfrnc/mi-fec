@@ -1,10 +1,10 @@
 import { ChangeEvent, useCallback, useEffect } from 'react';
 
-import { Author } from '../common/interfaces';
+import { ProcessedAuthor } from '../common/interfaces';
 import { Select, SelectProps } from './ui/Select';
 
 type AuthorSelectProps = {
-  authors: Author[];
+  authors: ProcessedAuthor[];
   value?: number;
   setValue: (value: number) => void;
 } & Omit<SelectProps, 'value'>;

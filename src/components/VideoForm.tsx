@@ -2,7 +2,7 @@ import { FormEvent, useMemo, useState } from 'react';
 import { Link } from 'wouter';
 
 import { Button } from '../components/ui/Button';
-import { Author, Category, VideoFormModel } from '../common/interfaces';
+import { Category, ProcessedAuthor, VideoFormModel } from '../common/interfaces';
 import { FormField } from './ui/FormField';
 import { useInput } from '../utils/useInput';
 import { Input } from './ui/Input';
@@ -18,7 +18,7 @@ interface VideoFormProps {
   authorId?: number;
   categoryIds: number[];
   onSubmit: (video: VideoFormModel) => void;
-  authors: Author[];
+  authors: ProcessedAuthor[];
   categories: Category[];
   errorMessage?: string;
 }
