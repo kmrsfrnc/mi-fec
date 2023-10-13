@@ -48,14 +48,14 @@ export function VideoForm({ onSubmit, authors, categories, errorMessage, ...prop
   return (
     <form onSubmit={handleSubmit}>
       {errorMessage && <h3>{errorMessage}</h3>}
-      <FormField label="Video name">
-        <Input {...nameInput} />
+      <FormField label="Video name" htmlFor="name">
+        <Input {...nameInput} id="name" />
       </FormField>
-      <FormField label="Video author">
-        <AuthorSelect authors={authors} value={authorId} setValue={setAuthorId} />
+      <FormField label="Video author" htmlFor="authorId">
+        <AuthorSelect authors={authors} value={authorId} setValue={setAuthorId} id="authorId" />
       </FormField>
-      <FormField label="Video category">
-        <CategoriesSelect categories={categories} value={categoryIds} setValue={setCategoryIds} />
+      <FormField label="Video category" htmlFor="categoryIds">
+        <CategoriesSelect categories={categories} value={categoryIds} setValue={setCategoryIds} id="categoryIds" />
       </FormField>
       <FormActions>
         <Button disabled={!handleSubmit} color="primary" type="submit">

@@ -1,15 +1,16 @@
 import { ChangeEvent, useCallback } from 'react';
+
 import { Category } from '../common/interfaces';
 import { toString } from '../utils/toString';
-import { Select } from './ui/Select';
+import { Select, SelectProps } from './ui/Select';
 
-interface CategoriesSelectProps {
+type CategoriesSelectProps = {
   categories: Category[];
   value: number[];
   setValue: (value: number[]) => void;
-}
+} & Omit<SelectProps, 'value'>;
 
-export const CategoriesSelect = ({ categories, value, setValue }: CategoriesSelectProps) => {
+export const CategoriesSelect = ({ categories, value, setValue, ...props }: CategoriesSelectProps) => {
   const onChange = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
       const options = Array.from(event.target.selectedOptions);
@@ -23,7 +24,7 @@ export const CategoriesSelect = ({ categories, value, setValue }: CategoriesSele
   );
 
   return (
-    <Select value={value.map(toString)} onChange={onChange} multiple>
+    <Select value={value.map(toString)} onChange={onChange} multiple {...props}>
       {categories.map((category) => (
         <option value={category.id} key={category.id}>
           {category.name}

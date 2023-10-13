@@ -2,8 +2,8 @@ import type { SelectHTMLAttributes } from 'react';
 
 import styles from './Select.module.css';
 
-type InputProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'className'>;
+export type SelectProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'className'>;
 
-export const Select = (props: InputProps) => {
+export const Select = (props: SelectProps) => {
   return <select {...props} className={styles.select} />;
 };
