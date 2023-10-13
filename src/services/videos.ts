@@ -30,6 +30,7 @@ export const updateVideo = async (id: number, body: VideoFormModel) => {
   const videoIndex = data.videos.findIndex((item) => item.id === id);
 
   if (videoIndex < 0) {
+    // the author of the video was changed
     const allAuthors = await getAuthors();
     const oldAuthor = allAuthors.find((author) => {
       return author.videos.find((item) => item.id === id);
